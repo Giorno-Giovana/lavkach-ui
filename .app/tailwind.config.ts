@@ -23,12 +23,12 @@ export default withShurikenUI({
     extend: {
       // Custom colors
       colors: {
-        primary: colors.indigo,
-        muted: colors.slate,
-        info: colors.sky,
-        success: colors.teal,
-        warning: colors.amber,
-        danger: colors.rose,
+        primary: colors.sky,
+        // muted: colors.slate,
+        // info: colors.sky,
+        // success: colors.teal,
+        // warning: colors.amber,
+        // danger: colors.rose,
       },
     },
   },

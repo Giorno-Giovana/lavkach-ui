@@ -1,9 +1,9 @@
 <script setup lang="ts">
 definePageMeta({
-  title: 'My page',
+  title: 'Главная',
 })
 </script>
 
 <template>
-  Hello Tairo!
+  Лавкач жив!
 </template>

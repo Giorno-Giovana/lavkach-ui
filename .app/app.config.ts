@@ -23,7 +23,7 @@ export default defineAppConfig({
       "items": []
     }
   },
-  "title": "Tairo Quick Starter",
+  "title": "Lavkach",
   "error": {
     "logo": {
       "component": "TairoLogo",
