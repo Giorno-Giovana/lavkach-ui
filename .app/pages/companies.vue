@@ -1,11 +1,15 @@
 <script setup lang="ts">
 definePageMeta({
-  title: 'Главная',
+  title: 'Компании',
 })
 </script>
 
 <template>
   <div>
-    Лавкач жив!
+    Компании
   </div>
 </template>
+
+<style scoped>
+
+</style>

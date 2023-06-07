@@ -1,37 +1,19 @@
+const iconTailwindClasses = 'w-10 h-10'
+
 export default defineAppConfig({
-  "sidebar": {
-    "circularMenu": {
-      "enabled": false,
-      "tools": []
-    },
-    "toolbar": {
-      "enabled": true,
-      "showTitle": true,
-      "showNavBurger": false,
-      "tools": []
-    },
-    "navigation": {
-      "enabled": true,
-      "startOpen": true,
-      "logo": {
-        "component": "TairoLogo",
-        "resolve": true,
-        "props": {
-          "class": "text-primary-600 h-10"
-        }
-      },
-      "items": []
-    }
-  },
-  "title": "Lavkach",
-  "error": {
-    "logo": {
-      "component": "TairoLogo",
-      "resolve": true,
-      "props": {
-        "class": "text-primary-500 mx-auto h-40 p-6"
+  tairo: {
+    title: 'Lavkach',
+    sidebar: {
+      navigation: {
+        items: [
+          {
+            title: 'Компании',
+            icon: { name: 'ph:buildings-duotone', class: iconTailwindClasses },
+            to: '/companies',
+            activePath: '/companies',
+          },
+        ]
       }
     }
-  },
-  "panels": []
+  }
 })
