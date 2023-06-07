@@ -3,4 +3,7 @@ export default defineNuxtConfig({
     '../layers/tairo',
     '../layers/tairo-layout-sidebar',
   ],
+  modules: [
+    '@nuxt/devtools',
+  ]
 })

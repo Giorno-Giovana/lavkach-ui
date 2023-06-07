@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@iconify/json": "2.2.67",
+    "@nuxt/devtools": "^0.5.5",
     "@parcel/watcher": "2.1.0",
     "@types/fs-extra": "11.0.1",
     "@typescript-eslint/eslint-plugin": "5.59.6",
@@ -71,5 +72,8 @@
     "overrides": {
       "consola": "3.1.0"
     }
+  },
+  "dependencies": {
+    "jwt-decode": "^3.1.2"
   }
 }
