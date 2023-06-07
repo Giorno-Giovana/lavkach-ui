@@ -2,10 +2,7 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { Field, useForm } from 'vee-validate'
 import { z } from 'zod'
-
-// switchColorShades(switchColorShades('primary', color.shades))
-// @ts-ignore
-const a  = () => switchColorShades('primary', [212, 246, 253])
+import {FetchContext, FetchResponse} from "ofetch";
 
 definePageMeta({
   layout: 'empty',
@@ -59,42 +56,19 @@ const {
   initialValues,
 })
 
-const router = useRouter()
-const toaster = useToaster()
-
 // This is where you would send the form data to the server
 const onSubmit = handleSubmit(async (values) => {
-  // here you have access to the validated form values
-  console.log('auth-success', values)
-
-  // try {
-    // fake delay, this will make isSubmitting value to be true
-    // await new Promise((resolve, reject) => {
-    //   if (values.password !== 'password') {
-    //     // simulate a backend error
-    //     setTimeout(
-    //       () => reject(new Error('Fake backend validation error')),
-    //       2000,
-    //     )
-    //   }
-    //   setTimeout(resolve, 4000)
-    // })
-
-    // toaster.clearAll()
-    // toaster.show({
-    //   title: 'Success',
-    //   message: `Welcome back!`,
-    //   color: 'success',
-    //   icon: 'ph:user-circle-fill',
-    //   closable: true,
-    // })
-  // } catch (error: any) {
-    // this will set the error on the form
-    // if (error.message === 'Fake backend validation error') {
-    //   setFieldError('password', 'Invalid credentials (use "password")')
-    // }
-    // return
-  // }
+  useFetch('/users/login', {
+    method: 'POST',
+    body: {
+      email: values.email,
+      password: values.password
+    },
+    onResponse(context: FetchContext & { response: FetchResponse<{ token: string }> }): Promise<void> | void {
+      const token = context.response._data.token;
+      useLocalStorage('token').value = token
+    },
+  })
 })
 </script>
 
