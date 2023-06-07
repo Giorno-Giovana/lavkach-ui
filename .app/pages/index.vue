@@ -5,7 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    Лавкач жив!
-  </div>
+  <div>Лавкач жив!</div>
 </template>
