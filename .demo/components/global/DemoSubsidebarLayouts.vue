@@ -231,52 +231,6 @@ const navigation = [
     ],
   },
   {
-    name: 'Auth',
-    children: [
-      {
-        name: 'Login',
-        icon: 'ph:lock-duotone',
-        to: '/auth',
-        exact: true,
-      },
-      {
-        name: 'Login V1',
-        icon: 'ph:lock-duotone',
-        to: '/auth/login-1',
-      },
-      {
-        name: 'Login V2',
-        icon: 'ph:lock-duotone',
-        to: '/auth/login-2',
-      },
-      {
-        name: 'Login V3',
-        icon: 'ph:lock-duotone',
-        to: '/auth/login-3',
-      },
-      {
-        name: 'Signup V1',
-        icon: 'ph:magic-wand-duotone',
-        to: '/auth/signup-1',
-      },
-      {
-        name: 'Signup V2',
-        icon: 'ph:magic-wand-duotone',
-        to: '/auth/signup-2',
-      },
-      {
-        name: 'Signup V3',
-        icon: 'ph:magic-wand-duotone',
-        to: '/auth/signup-3',
-      },
-      {
-        name: 'Forgot password',
-        icon: 'ph:fingerprint-duotone',
-        to: '/auth/recover',
-      },
-    ],
-  },
-  {
     name: 'Subpages',
     children: [
       {

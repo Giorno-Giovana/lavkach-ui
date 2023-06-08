@@ -13,7 +13,6 @@ export default defineNuxtConfig({
      * - landing: contains landing pages
      * - documentation: contains all /documentation pages
      */
-    '../layers/landing',
     process.env.ENABLE_DOCUMENTATION && '../layers/documentation',
 
     /**

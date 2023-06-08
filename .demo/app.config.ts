@@ -63,7 +63,7 @@ export default defineAppConfig({
       },
       navigation: {
         logo: {
-          component: 'TairoLogo',
+          component: 'LavkaIcon',
           props: { class: 'text-primary-600 h-10' },
         },
         items: [

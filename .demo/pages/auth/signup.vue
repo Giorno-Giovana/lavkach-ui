@@ -110,19 +110,6 @@ const onSubmit = handleSubmit(async (values) => {
   <div
     class="bg-muted-100 dark:bg-muted-900 relative min-h-screen w-full overflow-hidden px-4"
   >
-    <div
-      class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4"
-    >
-      <NuxtLink
-        to="/"
-        class="text-muted-400 hover:text-primary-500 dark:text-muted-700 dark:hover:text-primary-500 transition-colors duration-300"
-      >
-        <TairoLogo class="h-10 w-10" />
-      </NuxtLink>
-      <div>
-        <BaseThemeToggle />
-      </div>
-    </div>
     <div class="flex w-full items-center justify-center">
       <div class="relative mx-auto w-full max-w-2xl">
         <!--Form-->
@@ -135,15 +122,14 @@ const onSubmit = handleSubmit(async (values) => {
             novalidate
           >
             <div class="text-center">
+              <img src="../../assets/courier.png" class="mx-auto" />
+
               <BaseHeading as="h2" size="3xl" weight="medium">
-                Welcome to Tairo
+                Регистрация в Lavkach
               </BaseHeading>
-              <BaseParagraph size="sm" class="text-muted-400 mb-6">
-                Let's start by creating you account
-              </BaseParagraph>
             </div>
             <div class="px-8 py-4">
-              <div class="mb-4 space-y-4">
+              <div class="mb-10 space-y-4">
                 <Field
                   v-slot="{ field, errorMessage, handleChange, handleBlur }"
                   name="email"
@@ -153,8 +139,8 @@ const onSubmit = handleSubmit(async (values) => {
                     :error="errorMessage"
                     :disabled="isSubmitting"
                     type="email"
-                    label="Email address"
-                    placeholder="ex: maya@cssninja.io"
+                    label="Email"
+                    placeholder="a.volozh@ya.ru"
                     autocomplete="email"
                     :classes="{
                       input: 'h-12',
@@ -173,7 +159,7 @@ const onSubmit = handleSubmit(async (values) => {
                     :error="errorMessage"
                     :disabled="isSubmitting"
                     type="password"
-                    label="Password"
+                    label="Пароль"
                     placeholder="••••••••••"
                     autocomplete="new-password"
                     :classes="{
@@ -193,7 +179,7 @@ const onSubmit = handleSubmit(async (values) => {
                     :error="errorMessage"
                     :disabled="isSubmitting"
                     type="password"
-                    label="Confirm Password"
+                    label="Подтвердите пароль"
                     placeholder="••••••••••"
                     :classes="{
                       input: 'h-12',
@@ -203,34 +189,7 @@ const onSubmit = handleSubmit(async (values) => {
                   />
                 </Field>
               </div>
-              <div class="mb-6">
-                <div class="mt-6 flex items-center justify-between">
-                  <Field
-                    v-slot="{ field, errorMessage, handleChange, handleBlur }"
-                    name="terms"
-                  >
-                    <BaseCheckbox
-                      :model-value="field.value"
-                      :disabled="isSubmitting"
-                      :error="errorMessage"
-                      shape="rounded"
-                      color="primary"
-                      @update:model-value="handleChange"
-                      @blur="handleBlur"
-                    >
-                      <span>
-                        <span>I accept the</span>
-                        <a
-                          href="#"
-                          class="text-primary-500 hover:underline focus:underline"
-                        >
-                          Terms of Service
-                        </a>
-                      </span>
-                    </BaseCheckbox>
-                  </Field>
-                </div>
-              </div>
+
               <div class="mb-6">
                 <BaseButton
                   :disabled="isSubmitting"
@@ -239,54 +198,18 @@ const onSubmit = handleSubmit(async (values) => {
                   color="primary"
                   class="!h-12 w-full"
                 >
-                  Sign Up
+                  Зарегистрироваться
                 </BaseButton>
               </div>
-              <div class="mb-6 grid gap-0 sm:grid-cols-3">
-                <hr
-                  class="border-muted-200 dark:border-muted-700 mt-3 hidden border-t sm:block"
-                />
-                <span
-                  class="bg-muted-100 dark:bg-muted-900 text-muted-400 relative top-0.5 text-center font-sans text-sm"
-                >
-                  Or continue with
-                </span>
-                <hr
-                  class="border-muted-200 dark:border-muted-700 mt-3 hidden border-t sm:block"
-                />
-              </div>
-              <!--Social signup-->
-              <div class="grid grid-cols-3 gap-2">
-                <button
-                  type="button"
-                  class="bg-muted-200 dark:bg-muted-700 dark:hover:bg-muted-600 text-muted-600 dark:text-muted-400 nui-focus relative inline-flex w-full items-center justify-center rounded px-0 py-3 text-center text-sm font-semibold shadow-sm transition-all duration-300 hover:bg-white"
-                >
-                  <Icon name="fa6-brands:google" class="h-5 w-5" />
-                </button>
-                <button
-                  type="button"
-                  class="bg-muted-200 dark:bg-muted-700 dark:hover:bg-muted-600 text-muted-600 dark:text-muted-400 nui-focus relative inline-flex w-full items-center justify-center rounded px-0 py-3 text-center text-sm font-semibold shadow-sm transition-all duration-300 hover:bg-white"
-                >
-                  <Icon name="fa6-brands:twitter" class="h-5 w-5" />
-                </button>
-                <button
-                  type="button"
-                  class="bg-muted-200 dark:bg-muted-700 dark:hover:bg-muted-600 text-muted-600 dark:text-muted-400 nui-focus relative inline-flex w-full items-center justify-center rounded px-0 py-3 text-center text-sm font-semibold shadow-sm transition-all duration-300 hover:bg-white"
-                >
-                  <Icon name="fa6-brands:linkedin-in" class="h-5 w-5" />
-                </button>
-              </div>
 
-              <!--No account link-->
               <p
                 class="text-muted-400 mt-4 flex justify-between font-sans text-sm leading-5"
               >
-                <span>Already have an account?</span>
                 <NuxtLink
-                  to="/auth/login-2"
+                  to="/auth/login"
                   class="text-primary-600 hover:text-primary-500 font-medium underline-offset-4 transition duration-150 ease-in-out hover:underline"
                 >
-                  Sign in
+                  Войти
                 </NuxtLink>
               </p>
             </div>
