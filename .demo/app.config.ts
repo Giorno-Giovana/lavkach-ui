@@ -64,6 +64,11 @@ export default defineAppConfig({
             to: '/companies',
           },
           {
+            title: 'Склады',
+            icon: { name: 'lucide:warehouse', class: 'w-5 h-5' },
+            to: '/stores',
+          },
+          {
             title: 'Dashboards',
             icon: { name: 'ph:sidebar-duotone', class: 'w-5 h-5' },
             subsidebar: { component: 'DemoSubsidebarDashboards' },
