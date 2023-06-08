@@ -19,8 +19,14 @@ const props = withDefaults(
 )
 
 const app = useAppConfig()
-const { setup, currentName, isOpen } = useSidebar()
+const { setup, currentName, isOpen, toggle } = useSidebar()
 setup()
+
+const sidebar = ref(null)
+
+onClickOutside(sidebar, () => {
+  if (isOpen.value) toggle()
+})
 
 onUnmounted(() => {
   currentName.value = ''
@@ -75,6 +81,7 @@ const wrapperClass = computed(() => {
   <div class="bg-muted-100 dark:bg-muted-900 pb-20">
     <slot name="sidebar">
       <TairoSidebarNavigation
+        ref="sidebar"
         v-if="sidebarEnabled"
         :subsidebar="props.subsidebar"
       >

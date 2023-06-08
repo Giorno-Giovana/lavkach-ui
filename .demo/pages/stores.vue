@@ -8,12 +8,12 @@
       <TairoTableHeading uppercase>Источник</TairoTableHeading>
     </template>
 
-    <TairoTableRow v-for="store in data" :key="store.id">
-      <TairoTableCell class="pl-4">{{ store.title }}</TairoTableCell>
-      <TairoTableCell light>{{ store.id }}</TairoTableCell>
-      <TairoTableCell>{{ store.external_id }}</TairoTableCell>
-      <TairoTableCell>{{ store.address }}</TairoTableCell>
-      <TairoTableCell>{{ store.source }}</TairoTableCell>
+    <TairoTableRow v-for="d in data" :key="d.id">
+      <TairoTableCell class="pl-4">{{ d.title }}</TairoTableCell>
+      <TairoTableCell light>{{ d.id }}</TairoTableCell>
+      <TairoTableCell>{{ d.external_id }}</TairoTableCell>
+      <TairoTableCell>{{ d.address }}</TairoTableCell>
+      <TairoTableCell>{{ d.source }}</TairoTableCell>
     </TairoTableRow>
   </TairoTable>
 </template>
