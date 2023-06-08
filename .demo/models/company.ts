@@ -9,12 +9,12 @@ interface CompanyJson {
 
 export const company = {
   list() {
-    return $fetch<CompanyJson[]>('company', { method: 'POST' })
+    return useFetch<CompanyJson[]>('company')
   },
   create<T = CompanyJson>(body: T) {
     return $fetch<T>('company/create', { method: 'POST' })
   },
   byId(id: CompanyJson['id']) {
-    return useFetch<CompanyJson[]>('company/' + id, { method: 'GET' })
+    return useFetch<CompanyJson[]>('company/' + id)
   },
 }

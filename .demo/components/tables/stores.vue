@@ -8,7 +8,7 @@
       <TairoTableHeading uppercase>Источник</TairoTableHeading>
     </template>
 
-    <TairoTableRow v-for="store in data" :key="store.id">
+    <TairoTableRow v-for="store in stores" :key="store.id">
       <TairoTableCell class="pl-4">{{ store.title }}</TairoTableCell>
       <TairoTableCell light>{{ store.id }}</TairoTableCell>
       <TairoTableCell>{{ store.external_id }}</TairoTableCell>
@@ -25,5 +25,7 @@ definePageMeta({
   title: 'Склады',
 })
 
-const { data } = await store.list()
+// defineProps:
+
+const stores = await store.list()
 </script>

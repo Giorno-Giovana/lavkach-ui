@@ -9,7 +9,7 @@
       <TairoTableHeading uppercase>Страна</TairoTableHeading>
     </template>
 
-    <TairoTableRow v-for="company in companies" :key="company.id">
+    <TairoTableRow v-for="company in data" :key="company.id">
       <TairoTableCell class="pl-4">{{ company.title }}</TairoTableCell>
       <TairoTableCell light>{{ company.id }}</TairoTableCell>
       <TairoTableCell>{{ company.external_id }}</TairoTableCell>
@@ -27,5 +27,5 @@ definePageMeta({
   title: 'Компании',
 })
 
-const companies = await company.list()
+const { data } = await company.list()
 </script>

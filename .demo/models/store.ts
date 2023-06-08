@@ -8,12 +8,12 @@ interface StoreJson {
 
 export const store = {
   list() {
-    return $fetch<StoreJson[]>('store', { method: 'POST' })
+    return useFetch<StoreJson[]>('store')
   },
   create<T = StoreJson>(body: T) {
     return $fetch<T>('store', { method: 'POST' })
   },
   byId(id: StoreJson['id']) {
-    return $fetch<StoreJson[]>('store/' + id, { method: 'GET' })
+    return $fetch<StoreJson[]>('store/' + id)
   },
 }

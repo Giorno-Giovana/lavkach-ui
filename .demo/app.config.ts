@@ -69,6 +69,11 @@ export default defineAppConfig({
             to: '/stores',
           },
           {
+            title: 'Контрагенты',
+            icon: { name: 'carbon:partnership', class: 'w-5 h-5' },
+            to: '/contractors',
+          },
+          {
             title: 'Dashboards',
             icon: { name: 'ph:sidebar-duotone', class: 'w-5 h-5' },
             subsidebar: { component: 'DemoSubsidebarDashboards' },

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { company } from '~/models/company'
-
 definePageMeta({
   title: 'Мой склад',
   preview: {
@@ -255,22 +253,10 @@ function useBarProfit() {
     series,
   }
 }
-
-const companies = await company.list()
-
-// onMounted(async () => {
-//   companies.value = await company.list()
-// })
 </script>
 
 <template>
   <div>
-    <pre>
-
-      {{ companies }}
-
-    </pre>
-
     <!-- Header -->
     <div class="mb-8 justify-between md:flex-row md:items-center">
       <div
