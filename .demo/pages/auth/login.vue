@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
+import { FetchContext, FetchResponse } from 'ofetch'
 import { Field, useForm } from 'vee-validate'
 import { z } from 'zod'
-import {FetchContext, FetchResponse} from "ofetch";
+
+const router = useRouter()
 
 definePageMeta({
   layout: 'empty',
@@ -44,29 +46,24 @@ const initialValues = computed<FormInput>(() => ({
 const {
   handleSubmit,
   isSubmitting,
-  setFieldError,
-  meta,
-  values,
-  errors,
-  resetForm,
-  setFieldValue,
-  setErrors,
 } = useForm({
   validationSchema,
   initialValues,
 })
 
-// This is where you would send the form data to the server
 const onSubmit = handleSubmit(async (values) => {
   useFetch('/users/login', {
     method: 'POST',
     body: {
       email: values.email,
-      password: values.password
+      password: values.password,
     },
-    onResponse(context: FetchContext & { response: FetchResponse<{ token: string }> }): Promise<void> | void {
-      const token = context.response._data.token;
-      useLocalStorage('token').value = token
+    onResponse(
+      context: FetchContext & { response: FetchResponse<{ token: string }> },
+    ): Promise<void> | void {
+      const token = context.response._data.token
+      useLocalStorage('token', '').value = token
+      router.push('/')
     },
   })
 })
@@ -78,8 +75,7 @@ const onSubmit = handleSubmit(async (values) => {
   >
     <div
       class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4"
-    >
-    </div>
+    ></div>
     <div class="flex w-full items-center justify-center">
       <div class="relative mx-auto w-full max-w-2xl">
         <!--Form-->
@@ -91,7 +87,7 @@ const onSubmit = handleSubmit(async (values) => {
             class="me-auto ms-auto mt-4 w-full max-w-md"
             novalidate
           >
-            <img src="../../assets/bike.png" class="mx-auto" />
+            <img src="../../assets/img/bike.png" class="mx-auto" />
 
             <div class="text-center">
               <BaseHeading as="h2" size="3xl" weight="medium">

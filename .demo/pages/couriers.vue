@@ -34,10 +34,107 @@ const items = [
     status: 'pending',
   },
 ]
+
+const couriers = [
+  {
+    name: 'Maya Rosselini',
+    avatar: '/img/avatars/2.svg',
+    status: 'Неактивный',
+  },
+  {
+    name: 'Clark Smith',
+    avatar: '/img/avatars/3.svg',
+    status: 'Активный',
+  },
+  {
+    name: 'Hermann Mayer',
+    avatar: '/img/avatars/16.svg',
+    status: 'Активный',
+  },
+  {
+    name: 'Andrew Brickman',
+    avatar: '/img/avatars/8.svg',
+    status: 'Активный',
+  },
+  {
+    name: 'Jen Connelli',
+    avatar: '/img/avatars/10.svg',
+    status: 'Активный',
+  },
+]
 </script>
 
 <template>
   <div>
+    <div class="mb-4">
+      <BaseHeading
+        as="h2"
+        size="lg"
+        weight="light"
+        lead="tight"
+        class="text-muted-800 dark:text-white"
+      >
+        <span>Курьеры</span>
+      </BaseHeading>
+      <BaseParagraph size="sm">
+        <span class="text-muted-500">Список курьеров на лавке</span>
+      </BaseParagraph>
+    </div>
+    <div class="space-y-2">
+      <DemoFlexTableRow
+        v-for="(courier, index) in couriers"
+        :key="index"
+        shape="curved"
+        spaced
+      >
+        <template #start>
+          <DemoFlexTableStart
+            label="Student"
+            hide-label
+            :title="courier.name"
+            :avatar="courier.avatar"
+          />
+        </template>
+        <template #end>
+          <!-- <DemoFlexTableCell
+              label="location"
+              hide-label
+              class="w-full sm:w-32"
+            >
+              <span
+                class="text-muted-500 dark:text-muted-400 line-clamp-1 font-sans text-sm"
+              >
+                {{ courier.location }}
+              </span>
+            </DemoFlexTableCell> -->
+          <DemoFlexTableCell label="status" hide-label class="w-full sm:w-16">
+            <BaseTag
+              :color="courier.status === 'Активный' ? 'success' : 'muted'"
+              shape="full"
+              flavor="pastel"
+              condensed
+            >
+              {{ courier.status }}
+            </BaseTag>
+          </DemoFlexTableCell>
+          <!-- <DemoFlexTableCell
+              label="location"
+              hide-label
+              class="w-full sm:w-28"
+            >
+              <span
+                class="text-muted-500 dark:text-muted-400 font-sans text-sm"
+              >
+                {{ courier.presence }}
+              </span>
+            </DemoFlexTableCell> -->
+          <!-- <DemoFlexTableCell label="action" hide-label>
+              <BaseButtonAction>Chat</BaseButtonAction>
+            </DemoFlexTableCell> -->
+        </template>
+      </DemoFlexTableRow>
+    </div>
+
     <!-- Grid -->
     <div class="grid grid-cols-12 gap-6">
       <!-- Column -->

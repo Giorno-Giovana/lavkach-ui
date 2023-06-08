@@ -1,13 +1,3 @@
-/**
- * This file is used to configure the app
- *
- * If you have the "Cannot find name 'defineAppConfig'.ts(2304)" error
- * update the root tsconfig.json file to include the following:
- *
- *  "extends": "./.demo/.nuxt/tsconfig.json"
- *
- */
-
 export default defineAppConfig({
   nuxtIcon: {},
   nui: {
@@ -22,21 +12,12 @@ export default defineAppConfig({
           {
             component: 'DemoThemeToggle',
             props: {
-              disableTransitions: true,
+              disableTransitions: false,
             },
           },
-          {
-            component: 'DemoToolbarLanguage',
-          },
-          {
-            component: 'DemoToolbarNotifications',
-          },
-          {
-            component: 'DemoToolbarActivity',
-          },
-          {
-            component: 'DemoToolbarAccountMenu',
-          },
+          // {
+          //   component: 'DemoToolbarActivity',
+          // },
         ],
       },
       circularMenu: {
@@ -68,6 +49,21 @@ export default defineAppConfig({
         },
         items: [
           {
+            title: 'Курьеры',
+            icon: { name: 'ic:twotone-directions-bike', class: 'w-5 h-5' },
+            to: '/couriers',
+          },
+          {
+            title: 'Заявки',
+            icon: { name: 'material-symbols:order-approve', class: 'w-5 h-5' },
+            to: '/orders',
+          },
+          {
+            title: 'Компании',
+            icon: { name: 'ic:baseline-business', class: 'w-5 h-5' },
+            to: '/companies',
+          },
+          {
             title: 'Dashboards',
             icon: { name: 'ph:sidebar-duotone', class: 'w-5 h-5' },
             subsidebar: { component: 'DemoSubsidebarDashboards' },
@@ -79,35 +75,30 @@ export default defineAppConfig({
             subsidebar: { component: 'DemoSubsidebarLayouts' },
             activePath: '/layouts',
           },
-          {
-            title: 'Chat',
-            icon: { name: 'ph:chat-circle-duotone', class: 'w-5 h-5' },
-            to: '/dashboards/messaging',
-          },
-          {
-            title: 'Customize',
-            icon: { name: 'ph:drop-half-bottom-duotone', class: 'w-5 h-5' },
-            click: () => {
-              const isOpen = useState('switcher-open', () => false)
-              isOpen.value = true
-            },
-            position: 'end',
-          },
-          {
-            title: 'Search',
-            icon: { name: 'ph:magnifying-glass-duotone', class: 'w-5 h-5' },
-            click: () => {
-              const isOpen = useState('search-open', () => false)
-              isOpen.value = true
-            },
-            position: 'end',
-          },
-          {
-            title: 'Settings',
-            icon: { name: 'ph:gear-six-duotone', class: 'w-5 h-5' },
-            to: '/layouts/profile-settings',
-            position: 'end',
-          },
+          // {
+          //   title: 'Customize',
+          //   icon: { name: 'ph:drop-half-bottom-duotone', class: 'w-5 h-5' },
+          //   click: () => {
+          //     const isOpen = useState('switcher-open', () => false)
+          //     isOpen.value = true
+          //   },
+          //   position: 'end',
+          // },
+          // {
+          //   title: 'Search',
+          //   icon: { name: 'ph:magnifying-glass-duotone', class: 'w-5 h-5' },
+          //   click: () => {
+          //     const isOpen = useState('search-open', () => false)
+          //     isOpen.value = true
+          //   },
+          //   position: 'end',
+          // },
+          // {
+          //   title: 'Settings',
+          //   icon: { name: 'ph:gear-six-duotone', class: 'w-5 h-5' },
+          //   to: '/layouts/profile-settings',
+          //   position: 'end',
+          // },
           {
             title: 'My Account',
             component: 'DemoAccountMenu',

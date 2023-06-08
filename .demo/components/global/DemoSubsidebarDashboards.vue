@@ -75,11 +75,6 @@ const navigation = [
         to: '/dashboards/company',
       },
       {
-        name: 'HR board',
-        icon: 'ph:users-four-duotone',
-        to: '/dashboards/human-resources',
-      },
-      {
         name: 'Course dashboard',
         icon: 'ph:graduation-cap-duotone',
         to: '/dashboards/course',
@@ -158,11 +153,6 @@ const navigation = [
         name: 'Inbox',
         icon: 'ph:envelope-duotone',
         to: '/dashboards/inbox',
-      },
-      {
-        name: 'Messaging',
-        icon: 'ph:chat-circle-duotone',
-        to: '/dashboards/messaging',
       },
     ],
   },

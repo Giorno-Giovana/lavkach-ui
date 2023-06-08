@@ -7,37 +7,12 @@ import {
 } from './config/routes-rules'
 
 export default defineNuxtConfig({
-  extends: [
-    /**
-     * App layers: these are the layers that contains specific features
-     * - landing: contains landing pages
-     * - documentation: contains all /documentation pages
-     */
-    process.env.ENABLE_DOCUMENTATION && '../layers/documentation',
+  ssr: false,
 
-    /**
-     * This extends the base Tairo layer.
-     *
-     * Alternatively you can use the following:
-     * 'github:cssninjaStudio/tairo/layers/xxx#v1.0.0'
-     *
-     * And set GIGET_AUTH=<github_token> in your .env file
-     *
-     * This would allows you to create an empty git repository
-     * with only your source code and no demo.
-     */
+  extends: [
+    '../layers/tairo',
     '../layers/tairo-layout-sidebar',
     '../layers/tairo-layout-collapse',
-    '../layers/tairo',
-
-    /**
-     * This is an additional layer that adds SEO features.
-     *
-     * Can be used either to prevent indexing,
-     * or to add custom meta tags to improve referencing.
-     * @see https://github.com/harlan-zw/nuxt-seo-kit
-     */
-    'nuxt-seo-kit',
   ],
   modules: [
     /**
@@ -62,6 +37,7 @@ export default defineNuxtConfig({
   // nuxt behavior configuration
   runtimeConfig: {
     public: {
+      apiUrl: 'http://158.160.53.137:8080/api',
       // mapbox config
       mapboxToken: process.env.NUXT_PUBLIC_MAPBOX_TOKEN,
       // nuxt-seo-kit config

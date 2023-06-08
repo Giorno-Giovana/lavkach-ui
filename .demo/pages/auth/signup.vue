@@ -79,31 +79,39 @@ const { handleSubmit, isSubmitting } = useForm({
 const router = useRouter()
 const toaster = useToaster()
 
-// This is where you would send the form data to the server
-const onSubmit = handleSubmit(async (values) => {
-  // here you have access to the validated form values
-  console.log('auth-success', values)
+const email = ref('')
+const password = ref()
 
-  try {
-    // fake delay, this will make isSubmitting value to be true
-    await new Promise((resolve) => setTimeout(resolve, 4000))
-
-    toaster.clearAll()
-    toaster.show({
-      title: 'Success',
-      message: `Account created!`,
-      color: 'success',
-      icon: 'ph:user-circle-fill',
-      closable: true,
-    })
-  } catch (error: any) {
-    // handle error
-
-    return
-  }
-
-  router.push('/layouts/onboarding-1')
-})
+const onSubmit = async () => {
+  $fetch('/users', {
+    method: 'POST',
+    body: {
+      email: email.value,
+      password1: password.value,
+      password2: password.value,
+      nickname: `user ${~~Math.random() * 10000}`,
+    },
+    onResponse(context) {
+      if (context.response.ok) {
+        useFetch('/users/login', {
+          method: 'POST',
+          body: {
+            email: email.value,
+            password: password.value,
+          },
+          onResponse(context) {
+            const token = context.response._data.token
+            useLocalStorage('token', '').value = token
+            router.push('/')
+          },
+        })
+      }
+      // con
+      // const token = context.response._data.token
+      // useLocalStorage('token', '').value = token
+    },
+  })
+}
 </script>
 
 <template>
@@ -122,7 +130,7 @@ const onSubmit = handleSubmit(async (values) => {
             novalidate
           >
             <div class="text-center">
-              <img src="../../assets/courier.png" class="mx-auto" />
+              <img src="../../assets/img/courier.png" class="mx-auto" />
 
               <BaseHeading as="h2" size="3xl" weight="medium">
                 Регистрация в Lavkach
@@ -135,7 +143,7 @@ const onSubmit = handleSubmit(async (values) => {
                   name="email"
                 >
                   <BaseInput
-                    :model-value="field.value"
+                    v-model="email"
                     :error="errorMessage"
                     :disabled="isSubmitting"
                     type="email"
@@ -155,7 +163,7 @@ const onSubmit = handleSubmit(async (values) => {
                   name="password"
                 >
                   <BaseInput
-                    :model-value="field.value"
+                    v-model="password"
                     :error="errorMessage"
                     :disabled="isSubmitting"
                     type="password"

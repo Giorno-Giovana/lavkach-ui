@@ -6,35 +6,35 @@ const props = defineProps<{
 const members = [
   {
     id: 0,
-    firstName: 'Clarke',
-    lastName: 'Smith',
+    firstName: 'Витя',
+    lastName: 'Швед',
     image: '/img/avatars/3.svg',
     text: 'EC',
-    role: 'UI/UX designer',
+    role: 'Ждет заказ',
   },
   {
     id: 1,
-    firstName: 'Sara',
-    lastName: 'Connor',
+    firstName: 'Саня',
+    lastName: 'Зверь',
     image: undefined,
     text: 'SC',
-    role: 'Frontend developer',
+    role: 'Ждет заказ',
   },
   {
     id: 2,
-    firstName: 'Tara',
-    lastName: 'Svenson',
+    firstName: 'Филя',
+    lastName: 'Мощь',
     image: '/img/avatars/4.svg',
     text: 'TS',
-    role: 'Software architect',
+    role: 'Ждет заказ',
   },
   {
     id: 3,
-    firstName: 'Naomi',
-    lastName: 'Liversky',
+    firstName: 'Денчик',
+    lastName: '))))))',
     image: undefined,
     text: 'NL',
-    role: 'UI/UX designer',
+    role: 'Ждет заказ',
   },
 ]
 </script>
@@ -46,11 +46,11 @@ const members = [
       :key="member.id"
       class="flex items-center gap-3"
     >
-      <BaseAvatar
+      <!-- <BaseAvatar
         :src="member.image"
         :text="member.text"
         class="bg-primary-100 dark:bg-primary-500/20 text-primary-500 shrink-0"
-      />
+      /> -->
       <div>
         <BaseHeading
           as="h4"
@@ -59,7 +59,7 @@ const members = [
           lead="tight"
           class="text-muted-800 dark:text-white"
         >
-          <span>{{ member.firstName }} {{ member.lastName.slice(0, 1) }}.</span>
+          <span>{{ member.firstName }} {{ member.lastName }}</span>
         </BaseHeading>
         <BaseParagraph size="xs">
           <span class="text-muted-400">
@@ -67,14 +67,15 @@ const members = [
           </span>
         </BaseParagraph>
       </div>
-      <div v-if="props.actions" class="ms-auto flex items-center">
+      <Icon name="material-symbols:alarm" class="h-5 w-5 mb-3" />
+      <!-- <div v-if="props.actions" class="ms-auto flex items-center">
         <BaseButtonIcon shape="curved" muted class="scale-75">
           <Icon name="ph:phone-duotone" class="h-5 w-5" />
         </BaseButtonIcon>
         <BaseButtonIcon shape="curved" muted class="scale-75">
           <Icon name="ph:video-camera-duotone" class="h-5 w-5" />
         </BaseButtonIcon>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
