@@ -79,6 +79,26 @@ export default defineAppConfig({
             to: '/suppliers',
           },
           {
+            title: 'Производители',
+            icon: { name: 'fluent:manufacturer-24-filled', class: 'w-5 h-5' },
+            to: '/manufacturers',
+          },
+          {
+            title: 'Модели',
+            icon: { name: 'carbon:3d-mpr-toggle', class: 'w-5 h-5' },
+            to: '/models',
+          },
+          {
+            title: 'Типы',
+            icon: { name: 'uil:sitemap', class: 'w-5 h-5' },
+            to: '/asset-types',
+          },
+          {
+            title: 'Оборудование',
+            icon: { name: 'ph:cube-light', class: 'w-5 h-5' },
+            to: '/assets',
+          },
+          {
             title: 'Dashboards',
             icon: { name: 'ph:sidebar-duotone', class: 'w-5 h-5' },
             subsidebar: { component: 'DemoSubsidebarDashboards' },
