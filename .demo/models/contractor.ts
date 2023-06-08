@@ -1,4 +1,4 @@
-interface ContractorJson {
+export interface ContractorJson {
   title: string
   external_id: string
   company_id: string
@@ -11,7 +11,7 @@ export const contractor = {
     return useFetch<ContractorJson[]>('contractor')
   },
   create<T = ContractorJson>(body: T) {
-    return $fetch<T>('contractor', { method: 'POST' })
+    return $fetch<T>('contractor/create', { method: 'POST' })
   },
   byId(id: ContractorJson['id']) {
     return useFetch<ContractorJson[]>('contractor/' + id)

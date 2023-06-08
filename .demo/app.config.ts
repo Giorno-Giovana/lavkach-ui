@@ -74,6 +74,11 @@ export default defineAppConfig({
             to: '/contractors',
           },
           {
+            title: 'Поставщики',
+            icon: { name: 'icon-park-solid:worker', class: 'w-5 h-5' },
+            to: '/suppliers',
+          },
+          {
             title: 'Dashboards',
             icon: { name: 'ph:sidebar-duotone', class: 'w-5 h-5' },
             subsidebar: { component: 'DemoSubsidebarDashboards' },

@@ -1,4 +1,4 @@
-interface CompanyJson {
+export interface CompanyJson {
   id: string
   title: string
   external_id: string
