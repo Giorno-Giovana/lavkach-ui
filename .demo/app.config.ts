@@ -24,14 +24,19 @@ export default defineAppConfig({
         },
         items: [
           {
-            title: 'Курьеры',
-            icon: { name: 'ic:twotone-directions-bike', class: 'w-5 h-5' },
-            to: '/couriers',
-          },
-          {
             title: 'Заявки',
             icon: { name: 'material-symbols:order-approve', class: 'w-5 h-5' },
             to: '/orders',
+          },
+          {
+            title: 'Оборудование',
+            icon: { name: 'ph:cube-light', class: 'w-5 h-5' },
+            to: '/assets',
+          },
+          {
+            title: 'Курьеры',
+            icon: { name: 'ic:twotone-directions-bike', class: 'w-5 h-5' },
+            to: '/couriers',
           },
           {
             title: 'Компании',
@@ -67,11 +72,6 @@ export default defineAppConfig({
             title: 'Типы',
             icon: { name: 'uil:sitemap', class: 'w-5 h-5' },
             to: '/asset-types',
-          },
-          {
-            title: 'Оборудование',
-            icon: { name: 'ph:cube-light', class: 'w-5 h-5' },
-            to: '/assets',
           },
           {
             title: 'My Account',

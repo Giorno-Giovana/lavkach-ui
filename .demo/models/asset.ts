@@ -1,7 +1,7 @@
-import { AssetTypeJson } from "./assetType"
-import { ManufacturerJson } from "./manufacturer"
-import { ModelJson } from "./model"
-import { StoreJson } from "./store"
+import { AssetTypeJson } from './assetType'
+import { ManufacturerJson } from './manufacturer'
+import { ModelJson } from './model'
+import { StoreJson } from './store'
 
 export interface AssetJson {
   title: string
@@ -35,6 +35,6 @@ export const asset = {
     return $fetch<T>('asset/create', { method: 'POST' })
   },
   byId(id: AssetJson['id']) {
-    return useFetch<AssetJson[]>('asset/' + id)
+    return useFetch<AssetJson>('asset/' + id)
   },
 }

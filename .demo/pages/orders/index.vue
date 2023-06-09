@@ -9,7 +9,7 @@ const { data } = order.list()
 </script>
 
 <template>
-  <TairoContentWrapper>
+  <TairoContentWrapper class="md:w-2/3 mx-auto">
     <template #right>
       <BaseButton
         color="primary"

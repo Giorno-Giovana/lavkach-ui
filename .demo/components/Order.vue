@@ -5,13 +5,9 @@ const notCollapsed = ref(false)
 </script>
 
 <template>
-  <BaseCard
-    shape="curved"
-    class="flex flex-col p-5 sm:items-center"
-    @click="notCollapsed = !notCollapsed"
-  >
+  <BaseCard shape="curved" class="flex flex-col p-5 sm:items-center">
     <div class="flex flex-col">
-      <div class="relative">
+      <div class="relative" @click="notCollapsed = !notCollapsed">
         <NuxtLink :to="`/orders/${order.id}`" v-if="!hideLink">
           <BaseButtonIcon
             class="-right-1 -top-1 w-8 h-8"
@@ -43,6 +39,7 @@ const notCollapsed = ref(false)
         </div>
       </div>
       <div
+        @click="notCollapsed = !notCollapsed"
         class="divide-muted-200 dark:divide-muted-700 grid grid-cols-2 sm:grid-cols-4 w-full items-center justify-center gap-y-4 my-4 sm:divide-x"
       >
         <div class="flex flex-col gap-1 px-4 text-center">
@@ -116,92 +113,98 @@ const notCollapsed = ref(false)
       </div>
     </div>
 
-    <Transition>
-      <div v-if="notCollapsed" class="w-full border-gray-500 border-t pt-4">
-        <div class="pt-6">
-          <DemoFlexTableRow
-            v-for="(line, index) in order.order_lines"
-            :key="index"
-            shape="straight"
-            condensed
-            spaced
-          >
-            <template #start>
-              <div
-                class="relative mb-4 flex grow items-center gap-2 px-6 sm:mb-0 sm:px-2"
+    <div v-if="notCollapsed" class="w-full border-gray-500 border-t pt-4 mt-8">
+      <div class="pt-6">
+        <DemoFlexTableRow
+          v-for="(line, index) in order.order_lines"
+          :key="index"
+          shape="straight"
+          condensed
+          spaced
+        >
+          <template #start>
+            <div
+              class="relative mb-4 flex grow items-center gap-2 px-6 sm:mb-0 sm:px-2"
+            >
+              <span
+                v-if="index < 1"
+                class="text-muted-400 absolute hidden font-sans text-xs font-medium uppercase sm:-top-10 sm:start-2 sm:block"
               >
-                <span
-                  v-if="index < 1"
-                  class="text-muted-400 absolute hidden font-sans text-xs font-medium uppercase sm:-top-10 sm:start-2 sm:block"
-                >
-                  Товар/услуга
-                </span>
+                Товар/услуга
+              </span>
 
-                <div>
-                  <BaseHeading
-                    as="h4"
-                    size="sm"
-                    weight="medium"
-                    lead="tight"
-                    class="text-muted-700 dark:text-muted-100"
-                  >
-                    <span> {{ line.title }} </span>
-                  </BaseHeading>
-                  <BaseParagraph
-                    size="xs"
-                    lead="tight"
-                    class="text-muted-500 dark:text-muted-400"
-                  >
-                    {{ line.description }}
-                  </BaseParagraph>
-                </div>
+              <div>
+                <BaseHeading
+                  as="h4"
+                  size="sm"
+                  weight="medium"
+                  lead="tight"
+                  class="text-muted-700 dark:text-muted-100"
+                >
+                  <span> {{ line.title }} </span>
+                </BaseHeading>
+                <BaseParagraph
+                  size="xs"
+                  lead="tight"
+                  class="text-muted-500 dark:text-muted-400"
+                >
+                  {{ line.description }}
+                </BaseParagraph>
               </div>
-            </template>
-            <template #end>
-              <DemoFlexTableCell
-                label="Создал"
-                :hide-label="index > 0"
-                class="w-full sm:w-40"
+            </div>
+          </template>
+          <template #end>
+            <DemoFlexTableCell
+              label="Создал"
+              :hide-label="index > 0"
+              class="w-full sm:w-40"
+            >
+              <span
+                class="text-muted-500 dark:text-muted-400 font-sans text-sm"
               >
-                <span
-                  class="text-muted-500 dark:text-muted-400 font-sans text-sm"
-                >
-                  {{ line.user_created || '-' }}
-                </span>
-              </DemoFlexTableCell>
-              <DemoFlexTableCell
-                label="lsn"
-                :hide-label="index > 0"
-                class="w-full sm:w-40"
+                {{ line.user_created || '-' }}
+              </span>
+            </DemoFlexTableCell>
+            <DemoFlexTableCell
+              label="lsn"
+              :hide-label="index > 0"
+              class="w-full sm:w-40"
+            >
+              <span
+                class="text-muted-500 dark:text-muted-400 font-sans text-sm"
               >
-                <span
-                  class="text-muted-500 dark:text-muted-400 font-sans text-sm"
-                >
-                  {{ line.lsn }}
-                </span>
-              </DemoFlexTableCell>
-              <DemoFlexTableCell
-                label="КОличество"
-                :hide-label="index > 0"
-                class="w-full sm:w-40"
+                {{ line.lsn }}
+              </span>
+            </DemoFlexTableCell>
+            <DemoFlexTableCell
+              label="КОличество"
+              :hide-label="index > 0"
+              class="w-full sm:w-40"
+            >
+              <span
+                class="text-muted-500 dark:text-muted-400 font-sans text-sm"
               >
-                <span
-                  class="text-muted-500 dark:text-muted-400 font-sans text-sm"
-                >
-                  {{ line.quantity }}
-                </span>
-              </DemoFlexTableCell>
-              <DemoFlexTableCell
-                label="relations"
-                :hide-label="index > 0"
-                tablet-hidden
-                class="w-full sm:w-[160px]"
-              >
-              </DemoFlexTableCell>
-            </template>
-          </DemoFlexTableRow>
-        </div>
+                {{ line.quantity }}
+              </span>
+            </DemoFlexTableCell>
+          </template>
+        </DemoFlexTableRow>
       </div>
-    </Transition>
+
+      <div class="grid justify-around grid-cols-2 md:grid-cols-4 gap-8 mt-6">
+        <BaseButtonAction shape="curved" color="danger" style="height: 44px">
+          Отменить заявку
+        </BaseButtonAction>
+        <BaseButtonAction shape="curved" color="warning" style="height: 44px">
+          Добавить услугу
+        </BaseButtonAction>
+        <BaseButtonAction shape="curved" color="info" style="height: 44px">
+          Работа завершена
+        </BaseButtonAction>
+        <BaseButtonAction shape="curved" color="primary" style="height: 44px">
+          Взять в работу
+        </BaseButtonAction>
+      </div>
+    </div>
   </BaseCard>
 </template>
