@@ -1,9 +1,9 @@
 import { AssetJson } from './asset'
-import { OrderLineJson } from './orderLine'
 import { StoreJson } from './store'
 import { UserJson } from './user'
 
 export interface OrderJson {
+  company_id: string
   description: string
   supplier_id: string
   status: string
@@ -13,11 +13,18 @@ export interface OrderJson {
   supplier_user_id: string
   id: string
   lsn: number
-  number: number
+  number: 0
   store: StoreJson
   user_created: UserJson
   supplier_user: UserJson
-  order_lines: OrderLineJson[]
+  order_lines: {
+    title: string
+    description: string
+    order_id: string
+    quantity: 0
+    id: string
+    lsn: number
+  }[]
 }
 
 export const order = {
