@@ -6,8 +6,9 @@
     <TairoTable shape="curved">
       <template #header>
         <TairoTableHeading uppercase class="pl-4">Название</TairoTableHeading>
-        <TairoTableHeading uppercase>id</TairoTableHeading>
-        <TairoTableHeading uppercase>LSN</TairoTableHeading>
+        <TairoTableHeading uppercase class="pl-4">Модель</TairoTableHeading>
+        <!--<TairoTableHeading uppercase>id</TairoTableHeading>-->
+        <!--<TairoTableHeading uppercase>LSN</TairoTableHeading>-->
         <TairoTableHeading uppercase>Тип</TairoTableHeading>
         <TairoTableHeading uppercase>Сейчас у</TairoTableHeading>
         <TairoTableHeading uppercase>Серийный номер</TairoTableHeading>
@@ -19,14 +20,15 @@
 
       <TairoTableRow v-for="d in data" :key="d.id">
         <TairoTableCell class="pl-4">{{ d.title }}</TairoTableCell>
-        <TairoTableCell light>{{ d.id }}</TairoTableCell>
-        <TairoTableCell>{{ d.lsn }}</TairoTableCell>
+        <TairoTableCell class="pl-4">{{ d.model.title }}</TairoTableCell>
+        <!--<TairoTableCell light>{{ d.id }}</TairoTableCell>-->
+        <!--<TairoTableCell>{{ d.lsn }}</TairoTableCell>-->
         <TairoTableCell>{{ d.asset_type.title }}</TairoTableCell>
-        <TairoTableCell>{{ d.at }}</TairoTableCell>
+        <TairoTableCell>{{ d.at_user.nickname }}</TairoTableCell>
         <TairoTableCell>{{ d.serial }}</TairoTableCell>
         <TairoTableCell>{{ d.status }}</TairoTableCell>
         <TairoTableCell>{{ d.store.title }}</TairoTableCell>
-        <TairoTableCell>{{ d.user.nickname }}</TairoTableCell>
+        <TairoTableCell>{{ d.user_created.nickname }}</TairoTableCell>
         <TairoTableCell>
           <NuxtLink :to="`/assets/${d.id}`">
             <BaseButtonAction> Открыть </BaseButtonAction>
@@ -45,4 +47,5 @@ definePageMeta({
 })
 
 const { data } = await asset.list()
+var a = 1
 </script>

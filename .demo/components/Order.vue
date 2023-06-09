@@ -30,10 +30,7 @@ const notCollapsed = ref(false)
               class="text-muted-400 flex items-end text-sm mt-6 whitespace-pre-wrap"
             >
               {{ order.description }}
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-              voluptatum, nobis ducimus illo dolor reprehenderit enim beatae
-              pariatur corporis inventore libero doloribus soluta omnis modi
-              numquam deleniti, magni placeat voluptatem!
+             Плохо стал тормозить, а так же быстро спускаеют колеса, пытались подкачивать, но хватает на 1-2 дня
             </BaseParagraph>
           </div>
         </div>
@@ -66,14 +63,14 @@ const notCollapsed = ref(false)
             weight="semibold"
             class="text-muted-800 dark:text-muted-100"
           >
-            <span> {{ order.lsn }} </span>
+            <!--<span> {{ order.lsn }} </span>-->
           </BaseHeading>
           <BaseParagraph
             lead="none"
             weight="semibold"
             class="text-muted-400 !text-[0.65rem] uppercase"
           >
-            <span>lsn</span>
+            <!--<span>lsn</span>-->
           </BaseParagraph>
         </div>
         <div class="flex flex-col gap-1 px-4 text-center">
@@ -154,7 +151,7 @@ const notCollapsed = ref(false)
             </div>
           </template>
           <template #end>
-            <DemoFlexTableCell
+            <!--<DemoFlexTableCell
               label="Создал"
               :hide-label="index > 0"
               class="w-full sm:w-40"
@@ -164,8 +161,8 @@ const notCollapsed = ref(false)
               >
                 {{ line.user_created || '-' }}
               </span>
-            </DemoFlexTableCell>
-            <DemoFlexTableCell
+            </DemoFlexTableCell>-->
+            <!--<DemoFlexTableCell
               label="lsn"
               :hide-label="index > 0"
               class="w-full sm:w-40"
@@ -175,7 +172,7 @@ const notCollapsed = ref(false)
               >
                 {{ line.lsn }}
               </span>
-            </DemoFlexTableCell>
+            </DemoFlexTableCell>-->
             <DemoFlexTableCell
               label="КОличество"
               :hide-label="index > 0"
