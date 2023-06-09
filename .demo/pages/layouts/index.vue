@@ -44,7 +44,7 @@ const { data, pending, error, refresh } = await useFetch('/api/freelancers', {
     <TairoContentWrapper>
       <template #left>
         <BaseInput
-          v-model="filter"
+          v-model:model-value="filter"
           icon="lucide:search"
           placeholder="Filter users..."
           :classes="{

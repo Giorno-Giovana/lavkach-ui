@@ -2,11 +2,13 @@
 const apiUrl = useRuntimeConfig().public.apiUrl
 const userToken = useLocalStorage('token', '').value
 
-$fetch = $fetch.create({ baseURL: apiUrl, onRequest({ options }) {
+$fetch = $fetch.create({
+  baseURL: apiUrl,
+  onRequest({ options }) {
     options.headers = {
-      Authorization: userToken
+      Authorization: userToken,
     }
-  }
+  },
 })
 
 const route = useRoute()
@@ -70,10 +72,27 @@ useHead({
     },
   ],
 })
+
+// @ts-ignore
+// import { StreamBarcodeReader } from 'vue-barcode-reader'
+
+const scanning = useState('scanning', () => false)
+
+// const onDecode = (barcode: string) => {
+//   console.log(barcode)
+//   scanning.value = false
+// }
 </script>
 
 <template>
   <div>
+    <!-- <StreamBarcodeReader
+      v-if="scanning"
+      @decode="onDecode"
+      @loaded="onLoaded"
+      class="fixed"
+    /> -->
+
     <!-- 
       Vue Axe Popup
       @see .demo/plugins/vue-axe.client.ts

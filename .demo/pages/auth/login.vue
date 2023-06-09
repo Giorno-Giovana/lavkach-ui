@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
-import { FetchContext, FetchResponse } from 'ofetch'
 import { Field, useForm } from 'vee-validate'
 import { z } from 'zod'
+import { user } from '~/models/user'
 
 const router = useRouter()
 
@@ -43,29 +43,20 @@ const initialValues = computed<FormInput>(() => ({
   trustDevice: false,
 }))
 
-const {
-  handleSubmit,
-  isSubmitting,
-} = useForm({
+const { handleSubmit, isSubmitting } = useForm({
   validationSchema,
   initialValues,
 })
 
 const onSubmit = handleSubmit(async (values) => {
-  useFetch('/users/login', {
-    method: 'POST',
-    body: {
-      email: values.email,
-      password: values.password,
-    },
-    onResponse(
-      context: FetchContext & { response: FetchResponse<{ token: string }> },
-    ): Promise<void> | void {
-      const token = context.response._data.token
-      useLocalStorage('token', '').value = token
-      router.push('/')
-    },
+  const u = await user.login({
+    email: values.email,
+    password: values.password,
   })
+
+  const token = u.token
+  useLocalStorage('token', '').value = token
+  router.push('/')
 })
 </script>
 

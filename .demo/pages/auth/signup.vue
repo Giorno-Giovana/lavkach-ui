@@ -106,9 +106,6 @@ const onSubmit = async () => {
           },
         })
       }
-      // con
-      // const token = context.response._data.token
-      // useLocalStorage('token', '').value = token
     },
   })
 }

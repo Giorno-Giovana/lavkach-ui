@@ -1,6 +1,9 @@
 import { FetchError } from 'ofetch'
 
-export function useSearch<T>(data: T, error: FetchError<any> | null) {
+export function useSearch<T>(
+  data: T,
+  error: FetchError<any> | null,
+): { search: Ref<string>; filteredData: ComputedRef<NonNullable<T>> } {
   const search = ref('')
 
   const filteredData = computed(() => {
@@ -25,5 +28,6 @@ export function useSearch<T>(data: T, error: FetchError<any> | null) {
     return result
   })
 
+  // @ts-expect-error
   return { search, filteredData }
 }
