@@ -75,6 +75,7 @@ export default defineAppConfig({
           },
           {
             title: 'My Account',
+            subsidebar: { component: 'DemoSubsidebarLayouts' },
             component: 'DemoAccountMenu',
             position: 'end',
           },
